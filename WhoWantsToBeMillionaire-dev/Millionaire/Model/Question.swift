@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol  QuestionAndAnswersProtocol {
+protocol  QuestionAndAnswersProtocol: Codable {
     var question: String {get }
     var correctAnswer: String {get}
     var secondAnswer: String {get}
@@ -15,7 +15,7 @@ protocol  QuestionAndAnswersProtocol {
     var fourthAnswer: String {get}
 }
 
-struct QuestionAndAnswers: QuestionAndAnswersProtocol {
+struct QuestionAndAnswers: QuestionAndAnswersProtocol, Codable {
     var question: String
     var correctAnswer: String
     var secondAnswer: String

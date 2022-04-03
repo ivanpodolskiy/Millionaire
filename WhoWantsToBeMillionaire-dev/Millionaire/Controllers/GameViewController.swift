@@ -11,9 +11,11 @@ class GameViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.facade = QuestionsFacade(sequence: questionsSequence ?? .random)
         self.start()
         self.updateUI()
     }
+    
     @IBOutlet weak var firstAnswerButton: UIButton!
     @IBOutlet weak var secondAnswerButton: UIButton!
     @IBOutlet weak var thirdAnswerButton: UIButton!
@@ -28,86 +30,76 @@ class GameViewController: UIViewController {
         self.examinationAnswer(sender: sender)
     }
     
+    @IBOutlet weak var coutCorrectAnswer: UILabel!
+    
+    
     //Начало. Передаем делегат и передаем GameSession в Singleton
     func start() {
-        //Добавляем вопросы и ответы в массив allQuestion
-        questionStrage.getQuestions().forEach { q in
-            allQuestion.append(q)
-            print(allQuestion)
+        guard let arrySortQuestions = facade?.questionsSequenceGeneration() else {
+            return
         }
+        self.allQuestion  = arrySortQuestions
+        
         //Добавляем кнопки в массив arryButton
         self.arryButton.append(self.firstAnswerButton)
         self.arryButton.append(self.secondAnswerButton)
         self.arryButton.append(self.thirdAnswerButton)
         self.arryButton.append(self.fourthAnswerButton)
-        countQuestions = allQuestion.count
-        Game.shared.currentGame = gameSession
         self.delegat = gameSession
+        Game.shared.currentGame?.money.addObserver(self, options: [.initial, .new]) {  money,ch  in
+            self.countMoneyInBankLable.text = "Ваш банк: \(money)"
+        }
+        
+        Game.shared.currentGame?.currentNumberQuestion.addObserver(self, options: [.initial, .new]) { number,ch in
+            self.numberQuestionLabel.text = "Вопрос №\(number)"
+        }
+        
+        Game.shared.currentGame?.resultCount.addObserver(self, options: [.initial, .new]) { count, ch in
+            self.coutCorrectAnswer.text = ("Правельных ответов \(count)%")
+        }
     }
     
+    var facade: QuestionsFacade?
+    var questionsSequence: QuestionsSequence?
     
     weak var delegat: GameSessionDelegat?
     var gameSession  = GameSession()
-    var questionStrage = QuestionStorage()
+    
     var allQuestion: [QuestionAndAnswersProtocol] = []
     
     //Вспомогательные свойства
     var correctAnswer: String = ""
-    var countQuestions: Int = 0
-    var womMoney: Int = 0
-    var countСorrectAnswers: Int = 0
-    var question: String = ""
-    var arryButton: [UIButton] = []
     var numberQ: Int = 0
+    var arryButton: [UIButton] = []
     
-    //Обновление результатов
-    func updateResult() {
-        self.womMoney += 1000000 / countQuestions
-        self.countСorrectAnswers += 1
-        self.countMoneyInBankLable.text = "Ваш банк: \(womMoney)"
-    }
-    
- 
 
     //Проверка ответа
     func examinationAnswer(sender: UIButton) {
         if sender.titleLabel?.text == correctAnswer {
-            updateResult()
-            print ("Ответили правильн")
+            delegat?.loadResult()
             updateUI()
         } else {
-            print ("Ответили не правльно")
             self.showAler(title: "Вы проиграли :(")
-            delegat?.loadResult(correctAnswes: countСorrectAnswers, countQuestion: countQuestions, wonMoney: womMoney)
-            Game.shared.endGame()
         }
     }
     
     //Обновленеи UI
     func updateUI(){
-        //Проверяем массив allQuestion
-        if allQuestion.count == 0 {
-            //Передаем данные в делегат и удаляем GameSession из Singleton
-            delegat?.loadResult(correctAnswes: countСorrectAnswers, countQuestion: countQuestions, wonMoney: womMoney)
-            Game.shared.endGame()
+        if numberQ == allQuestion.count {
             showAler(title: "Вы выграли")
         } else {
-            let randomIndex = Int.random(in: 0..<allQuestion.count)
-            guard let model = allQuestion[randomIndex] as? QuestionAndAnswers else {
+            guard let model = allQuestion[numberQ] as? QuestionAndAnswers else {
                 return
             }
-            numberQ += 1
-            self.numberQuestionLabel.text  = "Вопрос №\(numberQ)"
-            self.correctAnswer = model.correctAnswer
             self.questionLabel.text = model.question
+            
+            self.correctAnswer = model.correctAnswer
             let secondA = model.secondAnswer
             let thirdA = model.thirdAnswer
             let fourthA = model.fourthAnswer
-            
-            print ("Правельный ответ: \(correctAnswer)")
             var arryAnswer = [correctAnswer, secondA, thirdA, fourthA]
-            var i = 3
             
+            var i = 3
             while i > 0 {
                 arryButton.forEach { button in
                     let index = Int.random(in: 0..<arryAnswer.count)
@@ -117,19 +109,22 @@ class GameViewController: UIViewController {
                     print (i)
                 }
             }
-            //Удалем использованный вопрос из массива allQuestion
-            allQuestion.remove(at: randomIndex)
+            numberQ += 1
         }
     }
     
-    //Алерт
     func showAler(title: String) {
-        let alertController = UIAlertController(title: title, message: "Вы ответили правильно: \(countСorrectAnswers) раз. Ваш банк: \(womMoney)", preferredStyle: .alert)
+        guard let money = Game.shared.currentGame?.money.value, let countСorrectAnswers =  Game.shared.currentGame?.countCorrectAnswer else {
+            return
+        }
+        let alertController = UIAlertController(title: title, message: "Вы ответили правильно: \(countСorrectAnswers) раз. Ваш банк: \(money)", preferredStyle: .alert)
         let actionAlert = UIAlertAction(title: "OK", style: .cancel) { _ in
             self.dismiss(animated: true, completion: nil)
         }
         alertController.addAction(actionAlert)
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: {
+            Game.shared.endGame()
+        })
     }
 
     

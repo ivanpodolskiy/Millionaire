@@ -18,10 +18,15 @@
 		CE6D175927F0F21100686421 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D175827F0F21100686421 /* MenuViewController.swift */; };
 		CE6D175B27F0F24D00686421 /* GameSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D175A27F0F24D00686421 /* GameSingleton.swift */; };
 		CE6D175D27F0F3D500686421 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D175C27F0F3D500686421 /* GameSession.swift */; };
-		CE6D175F27F0F75400686421 /* Caretacer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D175E27F0F75400686421 /* Caretacer.swift */; };
+		CE6D175F27F0F75400686421 /* CaretacerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D175E27F0F75400686421 /* CaretacerResult.swift */; };
 		CE6D176127F0F7A200686421 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D176027F0F7A200686421 /* Question.swift */; };
 		CE6D176327F0F8F300686421 /* QuestionStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D176227F0F8F300686421 /* QuestionStorage.swift */; };
 		CE6D176527F1D2B600686421 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE6D176427F1D2B500686421 /* Helper.swift */; };
+		CE834A8C27F77495006B5F78 /* QuestionsSequenceStargey.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE834A8B27F77495006B5F78 /* QuestionsSequenceStargey.swift */; };
+		CE834A8E27F77949006B5F78 /* QuestionsFacade.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE834A8D27F77949006B5F78 /* QuestionsFacade.swift */; };
+		CE834A9027F8A422006B5F78 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE834A8F27F8A422006B5F78 /* Observable.swift */; };
+		CEAC97C027F8C0EF000A2B94 /* CreatorNewQuestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC97BF27F8C0EF000A2B94 /* CreatorNewQuestionsViewController.swift */; };
+		CEAC97C227F8CB46000A2B94 /* CaretacerQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEAC97C127F8CB46000A2B94 /* CaretacerQuestions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,10 +43,15 @@
 		CE6D175827F0F21100686421 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CE6D175A27F0F24D00686421 /* GameSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSingleton.swift; sourceTree = "<group>"; };
 		CE6D175C27F0F3D500686421 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
-		CE6D175E27F0F75400686421 /* Caretacer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Caretacer.swift; sourceTree = "<group>"; };
+		CE6D175E27F0F75400686421 /* CaretacerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretacerResult.swift; sourceTree = "<group>"; };
 		CE6D176027F0F7A200686421 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		CE6D176227F0F8F300686421 /* QuestionStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionStorage.swift; sourceTree = "<group>"; };
 		CE6D176427F1D2B500686421 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		CE834A8B27F77495006B5F78 /* QuestionsSequenceStargey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionsSequenceStargey.swift; sourceTree = "<group>"; };
+		CE834A8D27F77949006B5F78 /* QuestionsFacade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsFacade.swift; sourceTree = "<group>"; };
+		CE834A8F27F8A422006B5F78 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		CEAC97BF27F8C0EF000A2B94 /* CreatorNewQuestionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatorNewQuestionsViewController.swift; sourceTree = "<group>"; };
+		CEAC97C127F8CB46000A2B94 /* CaretacerQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaretacerQuestions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +84,8 @@
 		CE6D173D27F0F1AD00686421 /* Millionaire */ = {
 			isa = PBXGroup;
 			children = (
-				CE6D175E27F0F75400686421 /* Caretacer.swift */,
+				CEAC97C327F9F839000A2B94 /* Caretacer */,
+				CE834A8A27F77495006B5F78 /* Strategy */,
 				CE6D175327F0F1BB00686421 /* Controllers */,
 				CE6D175227F0F1B700686421 /* Model */,
 				CE6D173E27F0F1AD00686421 /* AppDelegate.swift */,
@@ -85,6 +96,7 @@
 				CE6D174727F0F1AE00686421 /* Assets.xcassets */,
 				CE6D174927F0F1AE00686421 /* LaunchScreen.storyboard */,
 				CE6D174C27F0F1AE00686421 /* Info.plist */,
+				CE834A8F27F8A422006B5F78 /* Observable.swift */,
 			);
 			path = Millionaire;
 			sourceTree = "<group>";
@@ -93,9 +105,9 @@
 			isa = PBXGroup;
 			children = (
 				CE6D175A27F0F24D00686421 /* GameSingleton.swift */,
+				CE6D176227F0F8F300686421 /* QuestionStorage.swift */,
 				CE6D175C27F0F3D500686421 /* GameSession.swift */,
 				CE6D176027F0F7A200686421 /* Question.swift */,
-				CE6D176227F0F8F300686421 /* QuestionStorage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,8 +118,27 @@
 				CE6D175427F0F1D200686421 /* RecordsTableViewController.swift */,
 				CE6D175627F0F1F900686421 /* GameViewController.swift */,
 				CE6D175827F0F21100686421 /* MenuViewController.swift */,
+				CEAC97BF27F8C0EF000A2B94 /* CreatorNewQuestionsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		CE834A8A27F77495006B5F78 /* Strategy */ = {
+			isa = PBXGroup;
+			children = (
+				CE834A8B27F77495006B5F78 /* QuestionsSequenceStargey.swift */,
+				CE834A8D27F77949006B5F78 /* QuestionsFacade.swift */,
+			);
+			path = Strategy;
+			sourceTree = "<group>";
+		};
+		CEAC97C327F9F839000A2B94 /* Caretacer */ = {
+			isa = PBXGroup;
+			children = (
+				CEAC97C127F8CB46000A2B94 /* CaretacerQuestions.swift */,
+				CE6D175E27F0F75400686421 /* CaretacerResult.swift */,
+			);
+			path = Caretacer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,17 +213,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE6D176327F0F8F300686421 /* QuestionStorage.swift in Sources */,
+				CE834A9027F8A422006B5F78 /* Observable.swift in Sources */,
 				CE6D175727F0F1F900686421 /* GameViewController.swift in Sources */,
 				CE6D175527F0F1D200686421 /* RecordsTableViewController.swift in Sources */,
 				CE6D175D27F0F3D500686421 /* GameSession.swift in Sources */,
 				CE6D174327F0F1AD00686421 /* ViewController.swift in Sources */,
+				CEAC97C027F8C0EF000A2B94 /* CreatorNewQuestionsViewController.swift in Sources */,
+				CEAC97C227F8CB46000A2B94 /* CaretacerQuestions.swift in Sources */,
+				CE834A8C27F77495006B5F78 /* QuestionsSequenceStargey.swift in Sources */,
 				CE6D173F27F0F1AD00686421 /* AppDelegate.swift in Sources */,
 				CE6D174127F0F1AD00686421 /* SceneDelegate.swift in Sources */,
-				CE6D175F27F0F75400686421 /* Caretacer.swift in Sources */,
+				CE6D175F27F0F75400686421 /* CaretacerResult.swift in Sources */,
 				CE6D175B27F0F24D00686421 /* GameSingleton.swift in Sources */,
 				CE6D175927F0F21100686421 /* MenuViewController.swift in Sources */,
 				CE6D176127F0F7A200686421 /* Question.swift in Sources */,
 				CE6D176527F1D2B600686421 /* Helper.swift in Sources */,
+				CE834A8E27F77949006B5F78 /* QuestionsFacade.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,7 +378,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WhoWantsToBeMillionaire/Info.plist;
+				INFOPLIST_FILE = "/Users/user/Desktop/Swift/Millionaire/WhoWantsToBeMillionaire-dev/Millionaire/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -369,7 +405,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = WhoWantsToBeMillionaire/Info.plist;
+				INFOPLIST_FILE = "/Users/user/Desktop/Swift/Millionaire/WhoWantsToBeMillionaire-dev/Millionaire/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
